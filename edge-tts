@@ -1,0 +1,18 @@
+# === 自動安裝套件 ===
+import sys, subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", "edge-tts", "playsound"])
+
+# === 匯入套件 ===
+import asyncio
+import edge_tts
+from playsound import playsound
+
+# === 主程式 ===
+async def main():
+    text = "這是 Microsoft Edge 的文字轉語音範例。"
+    tts = edge_tts.Communicate(text, voice="zh-TW-HsiaoChenNeural")  # 女聲
+    await tts.save("output.mp3")
+    print("正在播放語音...")
+    playsound("output.mp3")
+
+asyncio.run(main())
