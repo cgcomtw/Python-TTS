@@ -1,0 +1,15 @@
+# === 自動安裝套件 ===
+import sys, subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", "pyttsx3"])
+
+# === 匯入套件 ===
+import pyttsx3
+
+# === 主程式 ===
+engine = pyttsx3.init()
+engine.setProperty('rate', 160)   # 語速
+engine.setProperty('volume', 1.0) # 音量 (0.0 ~ 1.0)
+
+text = "哈囉，這是 Python 的文字轉語音範例。"
+engine.say(text)
+engine.runAndWait()
