@@ -1,0 +1,15 @@
+# === 自動安裝套件 ===
+import sys, subprocess
+subprocess.check_call([sys.executable, "-m", "pip", "install", "gTTS", "playsound==1.2.2"])
+
+# === 匯入套件 ===
+from gtts import gTTS
+from playsound import playsound
+
+# === 主程式 ===
+text = "你好，歡迎使用 Google TTS 文字轉語音功能。"
+tts = gTTS(text=text, lang='zh-TW')
+tts.save("output.mp3")
+
+print("正在播放語音...")
+playsound("output.mp3")
